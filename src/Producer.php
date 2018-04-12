@@ -2,21 +2,21 @@
 
 namespace AdvancedLearning\ApiHelpers;
 
-use SilverStripe\Control\HTTPRequest;
-use SilverStripe\Control\HTTPResponse;
-use SilverStripe\Control\HTTPResponse_Exception;
+use SS_HTTPRequest;
+use SS_HTTPResponse;
+use SS_HTTPResponse_Exception;
 
 trait Producer
 {
     /**
      * Checks if the json is valid. Returns array representation if it is.
      *
-     * @param HTTPRequest $request
+     * @param SS_HTTPRequest $request
      *
      * @return array
-     * @throws HTTPResponse_Exception
+     * @throws SS_HTTPResponse_Exception
      */
-    protected function getJson(HTTPRequest $request)
+    protected function getJson(SS_HTTPRequest $request)
     {
         $json = $request->getBody();
 
@@ -41,11 +41,11 @@ trait Producer
      * @param array $data Array to be converted to json
      * @param int $responseCode HTTP response code
      *
-     * @return HTTPResponse
+     * @return SS_HTTPResponse
      */
-    public function json(array $data, $responseCode = 200)
+    public function json(array $data, $responseCode = 200): SS_HTTPResponse
     {
-        $response = new HTTPResponse(json_encode($data), $responseCode);
+        $response = new SS_HTTPResponse(json_encode($data), $responseCode);
         $response->addHeader('Content-Type', 'application/json');
         return $response;
     }
@@ -57,12 +57,12 @@ trait Producer
      * @param int    $errorCode    The error code to return.
      * @param string $errorMessage Plaintext error message.
      *
-     * @uses HTTPResponse_Exception
-     * @throws HTTPResponse_Exception
+     * @uses SS_HTTPResponse_Exception
+     * @throws SS_HTTPResponse_Exception
      */
     public function httpError($errorCode, $errorMessage = null)
     {
-        throw new HTTPResponse_Exception($this->json([
+        throw new SS_HTTPResponse_Exception($this->json([
             'errorCode' => $errorCode,
             'message' => $errorMessage
         ], $errorCode));
