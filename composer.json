@@ -1,0 +1,29 @@
+{
+    "name": "advanced-learning/silverstripe-api-helpers",
+    "description": "SilverStripe module providing helpers for producing and consuming JSON APIs",
+    "type": "silverstripe-vendormodule",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Conrad Dobbs",
+            "email": "riddler400@gmail.com"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4.0",
+        "silverstripe/vendor-plugin": "^1.0",
+        "PHP": ">=7.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "league/oauth2-client": "^2.3"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "^5.7@stable",
+        "silverstripe/sqlite3": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "AdvancedLearning\\ApiHelpers\\": "src",
+            "AdvancedLearning\\ApiHelpers\\Tests\\": "tests"
+        }
+    }
+}
