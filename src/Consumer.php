@@ -65,7 +65,7 @@ trait Consumer
      */
     protected function getToken()
     {
-        if (!$this->token) {
+        if (!$this->token || $this->token->hasExpired()) {
             $provider = $this->getOauthProvider();
             $this->token = $provider->getAccessToken($this->getGrantType(), $this->getOauthOptions());
         }
