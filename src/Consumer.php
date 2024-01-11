@@ -45,7 +45,7 @@ trait Consumer
         // add the data to the request
         if (in_array(strtoupper($method), ['PATCH', 'POST', 'PUT'])  && !empty($data)) {
             $options['json'] = $data;
-        } else if (!empty($data)) {
+        } elseif (!empty($data)) {
             $options['query'] = $data;
         }
 
@@ -65,7 +65,7 @@ trait Consumer
      */
     protected function getToken()
     {
-        if (!$this->token) {
+        if (!$this->token || $this->token->hasExpired()) {
             $provider = $this->getOauthProvider();
             $this->token = $provider->getAccessToken($this->getGrantType(), $this->getOauthOptions());
         }

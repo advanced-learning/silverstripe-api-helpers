@@ -3,17 +3,11 @@
     "description": "SilverStripe module providing helpers for producing and consuming JSON APIs",
     "type": "silverstripe-vendormodule",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Conrad Dobbs",
-            "email": "riddler400@gmail.com"
-        }
-    ],
     "require": {
         "silverstripe/framework": "^4.0",
         "silverstripe/vendor-plugin": "^1.0",
         "PHP": ">=7.1",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.2 | ^7",
         "league/oauth2-client": "^2.3"
     },
     "require-dev": {
